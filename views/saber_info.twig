@@ -1,0 +1,26 @@
+{% extends '__object.twig' %}
+
+{% block object_content %}
+    <div class="d-flex align-items-start gap-2 mb-3">
+        <span class="badge bg-primary fs-6">Класс: Сэйбер</span>
+        <span class="badge bg-warning text-dark fs-6">Ранг: S</span>
+    </div>
+
+    <p class="lead">{{ info_text }}</p>
+
+    <table class="table table-bordered mt-3" style="max-width: 400px;">
+        <thead class="table-dark">
+            <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Сила</td><td>A</td></tr>
+            <tr><td>Ловкость</td><td>A</td></tr>
+            <tr><td>Выносливость</td><td>B</td></tr>
+            <tr><td>Магия</td><td>C</td></tr>
+            <tr><td>Удача</td><td>B</td></tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% macro btn(label, url, active, style) %}
+    {% if active %}
+        {% set btnStyle = style ? style : 'primary' %}
+        <a href="{{ url }}" class="btn btn-{{ btnStyle }}">{{ label }}</a>
+    {% else %}
+        <a href="{{ url }}" class="btn btn-link">{{ label }}</a>
+    {% endif %}
+{% endmacro %}

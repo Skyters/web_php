@@ -1,0 +1,7 @@
+{% from 'macros.twig' import btn %}
+
+<li class="list-group-item d-flex align-items-center gap-3 py-3">
+    {{ btn(item.title, item.url, true) }}
+    {{ btn('Картинка', item.url ~ '/image', false) }}
+    {{ btn('Описание', item.url ~ '/info', false) }}
+</li>

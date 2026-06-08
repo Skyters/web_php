@@ -1,0 +1,24 @@
+{% extends '__layout.twig' %}
+{% from 'macros.twig' import btn %}
+
+{% block content %}
+
+<h1>{{ object.title }}</h1>
+<p>{{ object.subtitle }}</p>
+
+<ul class="nav mb-3">
+    <li class="nav-item">
+        {{ btn('Картинка', object.url ~ '/image', current_url starts with object.url ~ '/image') }}
+    </li>
+    <li class="nav-item">
+        {{ btn('Описание', object.url ~ '/info', current_url starts with object.url ~ '/info') }}
+    </li>
+</ul>
+
+{% block object_content %}
+    <div class="border rounded p-3 text-muted">
+        Выберите вверху какую информацию хотите посмотреть =O
+    </div>
+{% endblock %}
+
+{% endblock %}
