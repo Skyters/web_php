@@ -4,16 +4,32 @@
 
 <h1>Fate/GO</h1>
 
-<div class="text-center mt-3 mb-4">
-    <img src="/images/fate-stay-night-heavens-feel.gif" alt="Fate/GO" class="img-fluid rounded" style="max-height: 320px;">
-</div>
+<p>Выберите персонажа:</p>
 
-<p>Выберите место:</p>
-
-<ul class="list-group">
-    {% for item in menu_items %}
-        {% include '_list_item.twig' with { item: item } %}
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    {% for object in fate_objects %}
+    <div style="border: 1px solid #ddd; border-radius: 8px; padding: 12px; width: 180px; text-align: center; position: relative;">
+        <div style="position: absolute; right: 4px; top: 4px;">
+            <form action="/fate-object/delete" method="POST">
+                <input type="hidden" name="id" value="{{ object.id }}">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <i class="fas fa-times"></i>
+                </button>
+            </form>
+        </div>
+        <img src="{{ object.image }}" alt="{{ object.title }}" style="width: 100%; height: 140px; object-fit: cover; border-radius: 6px;">
+        <div class="mt-2">
+            <a href="/fate-object/{{ object.id }}" class="btn btn-primary btn-sm w-100">{{ object.title }}</a>
+        </div>
+        <div class="mt-1">
+            <a href="/fate-object/{{ object.id }}?show=image">Картинка</a>
+            &nbsp;
+            <a href="/fate-object/{{ object.id }}?show=info">Описание</a>
+            &nbsp;
+            <a href="/fate-object/{{ object.id }}/edit">Изменить</a>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
 {% endblock %}

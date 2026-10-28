@@ -39,18 +39,53 @@
         <a class="navbar-brand" href="/"><i class="fa-solid fa-star-and-crescent"></i></a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
-                {% for item in menu %}
                 <li class="nav-item">
-                    <a class="nav-link {{ title == item.title ? 'active' }}" href="{{ item.url }}">{{ item.title }}</a>
+                    <a class="nav-link {{ title == 'Главная' ? 'active' }}" href="/">Главная</a>
                 </li>
+                {% for type in types %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?type={{ type.title }}">{{ type.title|title }}</a>
+                    </li>
                 {% endfor %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Поиск</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/fate-object/create">Добавить героя</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/fate-type/create">Добавить тип</a>
+                </li>
             </ul>
+            <div class="d-flex gap-2 ms-3">
+                <form action="/set-welcome">
+                    <input type="text" name="message" class="form-control">
+                </form>
+                <form action="/logout" method="GET">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Выйти</button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>
 
-<div class="container mt-4">
-    {% block content %}{% endblock %}
+<div class="container pt-3 pb-3">
+    <div class="row">
+        <div class="col-9">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="col-3">
+            <p><strong>Последние страницы которые вы посетили</strong></p>
+            {% if history %}
+                {% for url in history %}
+                    <div class="bg-light p-2 mb-1 rounded" style="word-break: break-all;">
+                        <a href="{{ url }}">{{ url }}</a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 </body>

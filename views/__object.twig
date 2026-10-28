@@ -4,14 +4,14 @@
 {% block content %}
 
 <h1>{{ object.title }}</h1>
-<p>{{ object.subtitle }}</p>
+<p>{{ object.description }}</p>
 
 <ul class="nav mb-3">
     <li class="nav-item">
-        {{ btn('Картинка', object.url ~ '/image', current_url starts with object.url ~ '/image') }}
+        {{ btn('Картинка', '/fate-object/' ~ object.id ~ '?show=image', current_url starts with '/fate-object/' ~ object.id ~ '?show=image') }}
     </li>
     <li class="nav-item">
-        {{ btn('Описание', object.url ~ '/info', current_url starts with object.url ~ '/info') }}
+        {{ btn('Описание', '/fate-object/' ~ object.id ~ '?show=info', current_url starts with '/fate-object/' ~ object.id ~ '?show=info') }}
     </li>
 </ul>
 

@@ -1,0 +1,41 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+<h1>Поиск</h1>
+
+<form action="">
+    <div class="row g-3 align-items-end">
+        <div class="col">
+            <label class="form-label">Тип</label>
+            <select name="object_type" class="form-select">
+                <option value="">Все классы</option>
+                {% for type in types %}
+                    <option value="{{ type.title }}">{{ type.title|title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col">
+            <label class="form-label">Название</label>
+            <input type="text" name="title" class="form-control" value="{{ app.request.get('title') }}">
+        </div>
+        <div class="col">
+            <label class="form-label">Описание</label>
+            <input type="text" name="description" class="form-control">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </div>
+</form>
+
+{% if objects %}
+    <ul class="list-group mt-3">
+        {% for object in objects %}
+            <li class="list-group-item">
+                <a href="/fate-object/{{ object.id }}">{{ object.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}
