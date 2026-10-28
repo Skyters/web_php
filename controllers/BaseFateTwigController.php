@@ -1,6 +1,6 @@
 <?php
 
-class BaseSpaceTwigController extends TwigBaseController {
+class BaseFateTwigController extends TwigBaseController {
     public function getContext(): array
     {
         $context = parent::getContext();

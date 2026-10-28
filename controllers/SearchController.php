@@ -1,6 +1,6 @@
 <?php
 
-class SearchController extends BaseSpaceTwigController {
+class SearchController extends BaseFateTwigController {
     public $template = "search.twig";
 
     public function getContext(): array

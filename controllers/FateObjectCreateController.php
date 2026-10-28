@@ -1,13 +1,11 @@
 <?php
 
-class FateObjectCreateController extends BaseSpaceTwigController {
-    public $template = "space_object_create.twig";
+class FateObjectCreateController extends BaseFateTwigController {
+    public $template = "fate_object_create.twig";
 
     public function get(array $context) // добавили параметр
     {
-        echo $_SERVER['REQUEST_METHOD'];
-        
-        parent::get($context); // пробросили параметр
+        parent::get($context);
     }
 
 public function post(array $context) {

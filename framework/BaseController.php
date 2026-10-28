@@ -18,9 +18,6 @@ abstract class BaseController {
     }
 
     public function process_response() {
-        session_set_cookie_params(60 * 60 * 10);
-        session_start();
-
         //  сохранение историй посещений
         if (!isset($_SESSION['history'])) {
             $_SESSION['history'] = [];

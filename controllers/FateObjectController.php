@@ -1,6 +1,6 @@
 <?php
 
-class ObjectController extends BaseSpaceTwigController {
+class FateObjectController extends BaseFateTwigController {
     public $template = "__object.twig";
 
 public function getContext(): array
@@ -26,9 +26,8 @@ public function getContext(): array
         if ($show == 'image') {
             $this->template = "image.twig";
         } elseif ($show == 'info') {
-            $this->template = "saber_info.twig";
+            $this->template = "general_info.twig";
         }
-    
-        echo $this->twig->render($this->template, $context);
+        parent::get($context);
     }
 }

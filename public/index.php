@@ -1,20 +1,21 @@
 <?php
 
+session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 require_once "../vendor/autoload.php";
 require_once "../framework/autoload.php";
-require_once "../controllers/BaseSpaceTwigController.php";
+require_once "../controllers/BaseFateTwigController.php";
 require_once "../controllers/MainController.php";
-require_once "../controllers/ObjectController.php";
+require_once "../controllers/FateObjectController.php";
 require_once "../controllers/SearchController.php";
 require_once "../controllers/FateObjectCreateController.php";
 require_once "../controllers/FateTypeCreateController.php";
 require_once "../controllers/FateObjectDeleteController.php";
 require_once "../controllers/FateObjectUpdateController.php";
-require_once "../middlewares/LoginRequiredMiddeware.php";
+require_once "../middlewares/LoginRequiredMiddleware.php";
 require_once "../controllers/SetWelcomeController.php";
 require_once "../controllers/LoginController.php";
 require_once "../controllers/LogoutController.php";
@@ -35,16 +36,16 @@ $pdo = new PDO("mysql:host=localhost;dbname=fate;charset=utf8", "root", "");
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 // помните нашу регулярку, которую выше, делали, собственно вот сюда ее и загнали
-$router->add("/fate-object/(?P<id>\d+)", ObjectController::class);
+$router->add("/fate-object/(?P<id>\d+)", FateObjectController::class);
 $router->add("/search", SearchController::class);
 $router->add("/fate-object/create", FateObjectCreateController::class)
-        ->middleware(new LoginRequiredMiddeware());
+        ->middleware(new LoginRequiredMiddleware());
 $router->add("/fate-type/create", FateTypeCreateController::class)
-        ->middleware(new LoginRequiredMiddeware());
+        ->middleware(new LoginRequiredMiddleware());
 $router->add("/fate-object/delete", FateObjectDeleteController::class)
-        ->middleware(new LoginRequiredMiddeware());
+        ->middleware(new LoginRequiredMiddleware());
 $router->add("/fate-object/(?P<id>\d+)/edit", FateObjectUpdateController::class)
-        ->middleware(new LoginRequiredMiddeware());
+        ->middleware(new LoginRequiredMiddleware());
 $router->add("/set-welcome", SetWelcomeController::class);
 $router->add("/login", LoginController::class);
 $router->add("/logout", LogoutController::class);

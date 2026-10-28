@@ -1,6 +1,6 @@
 <?php
 
-class FateTypeCreateController extends BaseSpaceTwigController {
+class FateTypeCreateController extends BaseFateTwigController {
     public $template = "fate_type_create.twig";
 
     public function post(array $context) {

@@ -1,7 +1,7 @@
 <?php
 
-class FateObjectUpdateController extends BaseSpaceTwigController {
-    public $template = "space_object_edit.twig";
+class FateObjectUpdateController extends BaseFateTwigController {
+    public $template = "fate_object_edit.twig";
 
     public function get(array $context)
     {

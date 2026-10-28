@@ -1,30 +1,27 @@
 {% extends "__layout.twig" %}
+{% from 'macros.twig' import btn %}
 
 {% block content %}
-    <h1>Добавление нового героя</h1>
+    <h1>Редактирование героя</h1>
     <hr>
 
-    {% if message %}
-    <div class="alert alert-info">
-        {{message}}
-        <a href="/fate-object/{{id}}">Открыть новый проект</a>
-    </div>
-    {% endif %}
-
     <form action="" enctype="multipart/form-data" method="POST" class="row g-3">
+        <input type="hidden" name="current_image" value="{{ object.image }}">
         <div class="col-4">
             <label class="form-label">Название</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" value="{{ object.title }}">
         </div>
         <div class="col-4">
             <label class="form-label">Краткое описание</label>
-            <input type="text" class="form-control" name="description">
+            <input type="text" class="form-control" name="description" value="{{ object.description }}">
         </div>
         <div class="col-4">
             <label class="form-label">Тип</label>
             <select class="form-control" name="type">
                 {% for type in types %}
-                    <option value="{{ type.title }}">{{ type.title|title }}</option>
+                    <option value="{{ type.title }}" {% if type.title == object.type %}selected{% endif %}>
+                        {{ type.title|title }}
+                    </option>
                 {% endfor %}
             </select>
         </div>
@@ -33,11 +30,10 @@
             <input class="form-control" type="file" name="image">
         </div>
         <div class="col-12">
-            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5"></textarea>
+            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5">{{ object.info }}</textarea>
         </div>
         <div class="col-12 text-end">
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            {{ btn('Сохранить', '#', true) | replace({'href="#"': 'href="#" onclick="this.closest(\'form\').submit(); return false;"'}) | raw }}
         </div>
     </form>
-
 {% endblock %}

@@ -1,7 +1,24 @@
 {% from 'macros.twig' import btn %}
 
-<li class="list-group-item d-flex align-items-center gap-3 py-3">
-    {{ btn(item.title, item.url, true) }}
-    {{ btn('Картинка', item.url ~ '/image', false) }}
-    {{ btn('Описание', item.url ~ '/info', false) }}
-</li>
+<div style="border: 1px solid #ddd; border-radius: 8px; padding: 12px; width: 180px; text-align: center; position: relative;">
+    <div style="position: absolute; right: 4px; top: 4px;">
+        <form action="/fate-object/delete" method="POST">
+            <input type="hidden" name="id" value="{{ object.id }}">
+            <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fas fa-times"></i>
+            </button>
+        </form>
+    </div>
+    
+    <img src="{{ object.image }}" alt="{{ object.title }}" style="width: 100%; height: 140px; object-fit: cover; border-radius: 6px;">
+    
+    <div class="mt-2">
+        {{ btn(object.title, '/fate-object/' ~ object.id, true) }}
+    </div>
+    
+    <div class="mt-1 d-flex flex-column gap-1">
+        {{ btn('Картинка', '/fate-object/' ~ object.id ~ '?show=image', false) }}
+        {{ btn('Описание', '/fate-object/' ~ object.id ~ '?show=info', false) }}
+        {{ btn('Изменить', '/fate-object/' ~ object.id ~ '/edit', false) }}
+    </div>
+</div>
