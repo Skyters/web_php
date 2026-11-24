@@ -1,5 +1,4 @@
 {% extends "__layout.twig" %}
-{% from 'macros.twig' import btn %}
 
 {% block content %}
 <h1>Добавление типа</h1>
@@ -19,7 +18,7 @@
         <input type="file" class="form-control" name="image">
     </div>
     <div class="col-12 text-end">
-        {{ btn('Добавить', '#', true) | replace({'href="#"': 'href="#" onclick="this.closest(\'form\').submit(); return false;"'}) | raw }}
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </div>
 </form>
 {% endblock %}

@@ -3,11 +3,6 @@
 class FateObjectCreateController extends BaseFateTwigController {
     public $template = "fate_object_create.twig";
 
-    public function get(array $context) // добавили параметр
-    {
-        parent::get($context);
-    }
-
 public function post(array $context) {
         // получаем значения полей с формы
         $title = $_POST['title'];

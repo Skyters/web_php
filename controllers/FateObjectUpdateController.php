@@ -1,9 +1,8 @@
 <?php
-
 class FateObjectUpdateController extends BaseFateTwigController {
     public $template = "fate_object_edit.twig";
 
-    public function get(array $context)
+    public function get(array $context) // // Достает данные героя по id и заполняет ими форму редактирования
     {
         $id = $this->params['id'];
 

@@ -1,5 +1,5 @@
 <?php
-
+// Страница поиска
 class SearchController extends BaseFateTwigController {
     public $template = "search.twig";
 
@@ -7,9 +7,16 @@ class SearchController extends BaseFateTwigController {
     {
         $context = parent::getContext();
 
+        // Берем данные из URL или пустая строка.
         $type = isset($_GET['object_type']) ? $_GET['object_type'] : '';
-        $title = isset($_GET['title']) ? $_GET['title'] : '';
-        $description = isset($_GET['description']) ? $_GET['description'] : '';
+        $title = isset($_GET['title']) ? trim($_GET['title']) : '';
+        $description = isset($_GET['description']) ? trim($_GET['description']) : '';
+
+        // Сохраняем значения
+        $context['search_title'] = $title;
+        $context['search_description'] = $description;
+        $context['search_type'] = $type;
+
         $sql = <<<EOL
 SELECT id, title
 FROM fate_objects
@@ -20,6 +27,7 @@ EOL;
 
         $query = $this->pdo->prepare($sql);
 
+        // Передаем данные в запрос
         $query->bindValue("title", $title);
         $query->bindValue("type", $type);
         $query->bindValue("description", $description);

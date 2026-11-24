@@ -1,5 +1,4 @@
 <?php
-require_once "BaseFateTwigController.php";
 
 class Controller404 extends BaseFateTwigController {
     public $title    = "Страница не найдена";

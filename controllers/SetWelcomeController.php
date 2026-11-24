@@ -1,5 +1,5 @@
 <?php
-
+// Берет текст из URL, пишет его в сессию и возвращает на форму приветствия в шапке.
 class SetWelcomeController extends BaseController {
     public function get(array $context) {
         $_SESSION['welcome_message'] = $_GET['message'];

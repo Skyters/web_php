@@ -1,5 +1,4 @@
 {% extends "__layout.twig" %}
-{% from 'macros.twig' import btn %}
 
 {% block content %}
 <h1>Поиск</h1>
@@ -11,20 +10,25 @@
             <select name="object_type" class="form-select">
                 <option value="">Все классы</option>
                 {% for type in types %}
-                    <option value="{{ type.title }}">{{ type.title|title }}</option>
+                    {# проверяем совпадение типа по которому искали #}
+                    <option value="{{ type.id }}" {% if search_type == type.id %}selected{% endif %}>
+                        {{ type.title|title }}
+                    </option>
                 {% endfor %}
             </select>
         </div>
         <div class="col">
             <label class="form-label">Название</label>
-            <input type="text" name="title" class="form-control" value="">
+            {# подставляем название#}
+            <input type="text" name="title" class="form-control" value="{{ search_title }}">
         </div>
         <div class="col">
             <label class="form-label">Описание</label>
-            <input type="text" name="description" class="form-control" value="">
+            {#  подставляем описание #}
+            <input type="text" name="description" class="form-control" value="{{ search_description }}">
         </div>
         <div class="col-auto">
-            {{ btn('Найти', '#', true) | replace({'href="#"': 'href="#" onclick="this.closest(\'form\').submit(); return false;"'}) | raw }}
+            <button type="submit" class="btn btn-primary">Найти</button>
         </div>
     </div>
 </form>

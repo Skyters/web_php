@@ -1,6 +1,5 @@
 <?php
-require_once "BaseFateTwigController.php";
-
+// Достает список героев(одного типа или всех)
 class MainController extends BaseFateTwigController {
     public $title    = "Главная";
     public $template = "main.twig";

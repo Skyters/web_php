@@ -1,5 +1,5 @@
 <?php
-
+// Создание героя 
 class FateTypeCreateController extends BaseFateTwigController {
     public $template = "fate_type_create.twig";
 

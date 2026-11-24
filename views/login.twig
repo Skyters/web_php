@@ -1,5 +1,4 @@
 {% extends '__layout.twig' %}
-{% from 'macros.twig' import btn %}
 
 {% block content %}
 <h1>Вход</h1>
@@ -19,7 +18,7 @@
         <input type="password" class="form-control" name="password">
     </div>
     <div class="col-12">
-        {{ btn('Войти', '#', true) | replace({'href="#"': 'href="#" onclick="this.closest(\'form\').submit(); return false;"'}) | raw }}
+        <button type="submit" class="btn btn-primary">Войти</button>
     </div>
 </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 <?php
-
+// передает список типов в шапку сайта
 class BaseFateTwigController extends TwigBaseController {
     public function getContext(): array
     {
